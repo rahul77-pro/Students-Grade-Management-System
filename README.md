@@ -11,5 +11,5 @@ python app.py
 ## Features
 
 - Add students
-- Add grades (0-100)
+- Add grades (0.0-100.0, decimals allowed)
 - View average grade report

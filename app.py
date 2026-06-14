@@ -31,8 +31,8 @@ class StudentGradeManager:
     def report(self) -> dict[str, float]:
         result: dict[str, float] = {}
         for name in sorted(self._students):
-            average = self.get_average(name)
-            result[name] = 0.0 if average is None else average
+            grades = self._students[name]
+            result[name] = 0.0 if not grades else sum(grades) / len(grades)
         return result
 
 

@@ -55,7 +55,7 @@ def main() -> None:
                 print("Could not add student. Name may be empty or already exists.")
         elif choice == "2":
             name = input("Student name: ").strip()
-            grade_input = input("Grade (0-100): ").strip()
+            grade_input = input("Grade (0.0-100.0, decimals allowed): ").strip()
             try:
                 grade = float(grade_input)
             except ValueError:

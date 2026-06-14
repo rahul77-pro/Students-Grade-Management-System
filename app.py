@@ -20,6 +20,7 @@ class StudentGradeManager:
         return True
 
     def get_average(self, name: str) -> float | None:
+        """Return None when student does not exist, otherwise the average (0.0 if no grades)."""
         grades = self._students.get(name.strip())
         if grades is None:
             return None
@@ -28,7 +29,11 @@ class StudentGradeManager:
         return sum(grades) / len(grades)
 
     def report(self) -> dict[str, float]:
-        return {name: self.get_average(name) or 0.0 for name in sorted(self._students)}
+        result: dict[str, float] = {}
+        for name in sorted(self._students):
+            average = self.get_average(name)
+            result[name] = 0.0 if average is None else average
+        return result
 
 
 def main() -> None:

@@ -13,13 +13,14 @@ class StudentGradeManager:
         return True
 
     def add_grade(self, name: str, grade: float) -> bool:
-        if name not in self._students or grade < 0 or grade > 100:
+        normalized_name = name.strip()
+        if normalized_name not in self._students or grade < 0 or grade > 100:
             return False
-        self._students[name].append(grade)
+        self._students[normalized_name].append(grade)
         return True
 
     def get_average(self, name: str) -> float | None:
-        grades = self._students.get(name)
+        grades = self._students.get(name.strip())
         if grades is None:
             return None
         if not grades:
@@ -34,7 +35,7 @@ def main() -> None:
     manager = StudentGradeManager()
 
     while True:
-        print("\nStudents Grade Management System")
+        print("\nStudent Grade Management System")
         print("1. Add student")
         print("2. Add grade")
         print("3. View report")
